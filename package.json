@@ -1,0 +1,7 @@
+{
+  "name": "primepips-chatbot-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend API for the PrimePipsForex educational chatbot",
+  "main": "api/chat.js"
+}
