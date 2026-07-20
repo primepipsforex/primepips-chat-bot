@@ -30,7 +30,12 @@
       transition: transform 0.15s ease;
     }
     #ppf-chat-bubble:hover { transform: scale(1.06); }
-    #ppf-chat-bubble svg { width: 28px; height: 28px; fill: #fff; }
+    #ppf-chat-bubble img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
 
     #ppf-chat-window {
       position: fixed;
@@ -161,16 +166,19 @@
 
   const bubble = document.createElement("div");
   bubble.id = "ppf-chat-bubble";
-  bubble.innerHTML = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.42 1.17 4.6 3.06 6.19-.11.99-.44 2.72-1.06 4.31 0 0 2.5-.5 4.5-1.94.8.24 1.65.44 2.5.44 5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>`;
+  bubble.innerHTML = `<img src="https://www.primepipsforex.com/web/image/website/1/logo/primepipsforex" alt="PrimePips Chatbot" />`;
   document.body.appendChild(bubble);
 
   const win = document.createElement("div");
   win.id = "ppf-chat-window";
   win.innerHTML = `
     <div id="ppf-chat-header">
-      <div>
-        Pip · PrimePipsForex Mentor
-        <span class="sub">Ask me any forex concept</span>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="https://www.primepipsforex.com/web/image/website/1/logo/primepipsforex" alt="PrimePips" style="width:26px;height:26px;border-radius:50%;object-fit:contain;background:#fff;" />
+        <div>
+          PrimePips Chatbot
+          <span class="sub">Ask me any forex concept</span>
+        </div>
       </div>
       <button id="ppf-chat-close">&times;</button>
     </div>
@@ -216,7 +224,7 @@
     if (history.length === 0) {
       addMessage(
         "bot",
-        "Hey, I'm Pip 👋 Your forex mentor here at PrimePipsForex. Ask me things like \"what is support\", \"explain Fibonacci retracement\", or \"what is a higher high\" — I'm here to help you learn."
+        "Hey, I'm the PrimePips Chatbot 👋 Your forex mentor here at PrimePipsForex. Ask me things like \"what is support\", \"explain Fibonacci retracement\", or \"what is a higher high\" — I'm here to help you learn."
       );
     } else {
       history.forEach((m) => addMessage(m.role === "user" ? "user" : "bot", m.content));
@@ -248,7 +256,7 @@
     sending = true;
     const typingEl = document.createElement("div");
     typingEl.className = "ppf-typing";
-    typingEl.textContent = "Pip is typing...";
+    typingEl.textContent = "PrimePips Chatbot is typing...";
     messagesEl.appendChild(typingEl);
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
